@@ -14,7 +14,7 @@ const port = 3000; //definimos puerto
 app.listen(port, () => console.log("Servidor escuchado en puerto 3000"));
 
 //Importando funcion desde el módulo consultas.js:
-const { insertar, consultar } = require("./consultas/consultas.js");
+const { insertar, consultar, eliminar } = require("./consultas/consultas.js");
 
 //middleware para recibir desde el front (los objetos) como json:
 app.use(express.json());
@@ -54,3 +54,17 @@ app.get("/canciones", async (req, res) => {
     res.status(500).send(error);
   }
 });
+
+//Ruta para eliminar un registros de la tabla canciones por id
+app.delete("/cancion", async (req, res) => {
+    try {
+        const { id } = req.query;
+        const resultado = await eliminar (id);
+        console.log("Respuesta de la funcion eliminar en el index: ", resultado);
+      res.json(resultado);
+      // res.status(200).send(registros);
+    //   res.status(200).json(registros);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });

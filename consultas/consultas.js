@@ -41,7 +41,7 @@ async function consultar () {
 
 //funcion para eliminar una canción según su id recibido como un query.string
 async function eliminar (id) {
-    const result = await pool.query("DELETE FROM cancioness WHERE id = $1 RETURNING *", [id]);
+    const result = await pool.query("DELETE FROM canciones WHERE id = $1 RETURNING *", [id]);
     return result.rows[0]; //devuelve el registro eliminado
 }
 
