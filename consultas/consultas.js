@@ -1,4 +1,5 @@
-const { Pool } = require('pg'); //importamos pg y extraemos pool
+//del pagquete pg requerimos solo clase pool, permite múltiples conexiones:
+const { Pool } = require('pg'); 
 
 const pool = new Pool({ //construimos objeto de conexión e instanciamos
     user: 'postgres',
@@ -23,7 +24,7 @@ async function insertar (datos) {
         values: [titulo, artista, tono]
     })
     //para saber lo que me responde la instrucción: 
-    console.log("valor de result :", result);
+    // console.log("valor de result :", result);
     //La función necesita devolver algo para entregarle a la ruta, necesita un return.
     //Valor del result o del registro agregado:
     console.log("Registro agregado row cero: " , result.rows[0]); 

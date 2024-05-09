@@ -1,5 +1,3 @@
-
-
 // npm init --yes
 // npm i express
 // npm i morgan
@@ -15,7 +13,12 @@ const port = 3000; //definimos puerto
 app.listen(port, () => console.log("Servidor escuchado en puerto 3000"));
 
 //Importando funcion desde el módulo consultas.js:
-const { insertar, consultar, eliminar, editar } = require("./consultas/consultas.js");
+const {
+  insertar,
+  consultar,
+  eliminar,
+  editar,
+} = require("./consultas/consultas.js");
 
 //middleware para recibir desde el front (los objetos) como json:
 app.use(express.json());
@@ -29,6 +32,17 @@ app.get("/", (req, res) => {
 //Ruta para agregar una nuevaCanción a la lista:
 app.post("/cancion", async (req, res) => {
   try {
+    const { titulo, artista, tono } = req.body; // Extraer los campos 'titulo', 'artista' y 'tono' del cuerpo de la solicitud
+    
+    // Validar que los campos no estén vacíos
+    if (titulo == "" || artista == "" || tono == "") {
+      console.log("Los campos 'titulo', 'artista' y 'tono' son requeridos.");
+        return res
+          .status(400)
+          .json({
+            error: "Los campos 'titulo', 'artista' y 'tono' son requeridos.",
+          });
+    }
     const datos = Object.values(req.body); //object.values extrae los valoes de todas las propiedades enumerables del objeto body y almacena esos valores en un array llamado datos
     const respuesta = await insertar(datos); // el resultado de la función insertar con argumento array datos, se almacena en respuesta
     console.log(
@@ -37,6 +51,8 @@ app.post("/cancion", async (req, res) => {
     );
     res.status(201).send(respuesta);
   } catch (error) {
+    // console.log("Error: ", error);
+    console.log("Error: ", error.message);
     res.status(500).send(error);
   }
 });
@@ -50,6 +66,8 @@ app.get("/canciones", async (req, res) => {
     // res.status(200).send(registros);
     res.status(200).json(registros);
   } catch (error) {
+    // console.log("Error: ", error);
+    console.log("Error: ", error.message);
     res.status(500).send(error);
   }
 });
@@ -64,6 +82,8 @@ app.delete("/cancion", async (req, res) => {
     // res.status(200).send(registros);
     //   res.status(200).json(registros);
   } catch (error) {
+    // console.log("Error: ", error);
+    console.log("Error: ", error.message);
     res.status(500).send(error);
   }
 });
@@ -72,6 +92,17 @@ app.delete("/cancion", async (req, res) => {
 app.put("/cancion/:id", async (req, res) => {
   try {
     const { id } = req.params; // Obtener el ID de la canción de los parámetros de la ruta
+    const { titulo, artista, tono } = req.body; // Extraer los campos 'titulo', 'artista' y 'tono' del cuerpo de la solicitud
+
+    // Validar que los campos no estén vacíos
+    if (titulo == "" || artista == "" || tono == "") {
+        console.log("Los campos 'titulo', 'artista' y 'tono' son requeridos para editar.");
+          return res
+            .status(400)
+            .json({
+              error: "Los campos 'titulo', 'artista' y 'tono' son requeridos para editar",
+            });
+      }
     const datos = Object.values(req.body);
     const respuesta = await editar(id, datos); // llamo a la función editar con argumento id y datos, su respuesta se almacena en variable respuesta
     console.log(
@@ -80,6 +111,8 @@ app.put("/cancion/:id", async (req, res) => {
     );
     res.status(200).send(respuesta);
   } catch (error) {
+    console.log("Error: ", error);
+    console.log("Error: ", error.message);
     res.status(500).send(error);
   }
 });
