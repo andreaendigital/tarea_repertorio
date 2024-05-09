@@ -44,34 +44,47 @@ Lista de software y herramientas, incluyendo versiones, que necesitas para insta
 
 ## Visuales :mage_woman:
 
-- Front Entregado del proyecto :
+- #### Front Entregado del proyecto :
+  
 
 ![repertoriofront](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/3943a7a5-0087-4372-acfd-c473326f0773)
 
 
-- Alertas para validación de campos vacíos en agregar canción y en editar canción:
+- #### Alertas para validación de campos vacíos en agregar canción y en editar canción:
+- 
   
  ![validacionCamposAgregar](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/27486dd6-2312-468a-ae39-bcae7df9e308)
+ 
 
 ![validacionCamposEdicion](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/71d8f384-f39e-4e54-b11c-01444f4a742a)
 
-- Avisos de procesos exitosos:
+
+- #### Avisos de procesos exitosos:
+
 
 ![cancionAgregada](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/44f9e586-93cf-4512-b16d-59883f61862f)
 
+
 ![avisoedicionexitosa](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/40523426-1ca9-46e5-94a5-0e7a8c1817ae)
+
 
 ![aviso al eliminar](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/cefc7298-ab48-4e02-b275-10f2364d2bb0)
 
-- Alerta para errores de consola: 
+
+- #### Alerta para errores de consola:
+- 
 
 ![alertparaerroresdeconsola](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/e3a46710-f525-4d26-96a6-96a0808a2793)
 
-- Errores en consola:
+
+- #### Errores en consola:
+  
 
 ![error3consola](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/ba7499e6-1c5f-4329-af64-fd8dabc24f7a)
 
+
 ![error1consola](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/7d910e55-a5b9-41e1-a973-ca4243787865)
+
 
 ![error2consola](https://github.com/andreaendigital/tarea_repertorio/assets/154395788/b04c420e-5310-4fc9-badd-03133d244889)
 
