@@ -45,4 +45,17 @@ async function eliminar (id) {
     return result.rows[0]; //devuelve el registro eliminado
 }
 
-module.exports = {insertar, consultar, eliminar}; //exporto la función
+async function editar (id, datos){
+        //editar recibe el array datos 
+        console.log("Valores recibidos: " , datos);
+        const [titulo, artista, tono] = datos; // Extraer datos del array datos
+
+        const query = {
+            text: 'UPDATE canciones SET titulo = $1, artista = $2, tono = $3 WHERE id = $4 RETURNING *',
+            values: [titulo, artista, tono, id]
+        };
+    
+        const result = await pool.query(query);
+        return result.rows[0]; // Devolver la canción actualizada
+}
+module.exports = {insertar, consultar, eliminar, editar}; //exporto la función
